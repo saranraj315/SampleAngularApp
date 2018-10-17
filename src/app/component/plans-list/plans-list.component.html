@@ -1,0 +1,33 @@
+<div class="container mt-5">
+  <h2 class="mb-5 ml-5">
+    <fa name="user"></fa>  List of Plans
+  </h2>
+
+  <div class="alert alert-warning" *ngIf="!employees || employees.length==0">
+    <fa name="exclamation-triangle"></fa> Records could not be found or loaded
+  </div>
+
+  <div class="row" *ngIf="employees && employees.length>0">
+    <div class="col-lg-3 ml-5 mb-5" *ngFor="let c of employees">
+      <div class="card" (mouseover)="cf.hidden=false" (mouseleave)="cf.hidden=true">
+
+        <div class="card-body">
+          <h6 class="card-title">{{c.title}}</h6>
+          <p class="card-text">
+            {{c.speed}}<b>Mbps Speed</b>
+            <br /> {{c.maxUsage}}<b>GB per Month</b>
+            <br />  <b> Rs. </b>{{c.chargePerMonth}}
+          </p>
+        </div>
+        <div class="card-footer" hidden="true" #cf>
+          <div class="btn-group">
+            <a routerLink="/addCustomer/{{c.title}}" class="btn">
+               <button>Apply</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
